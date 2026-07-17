@@ -1,8 +1,19 @@
 import { Link, usePage, router } from '@inertiajs/react';
 import {
-    Menu, X, ChevronDown, User, Bookmark, LogOut,
-    BookOpen, Newspaper, FlaskConical, GraduationCap,
-    Home, Phone, Mail, MapPin,
+    Menu,
+    X,
+    ChevronDown,
+    User,
+    Bookmark,
+    LogOut,
+    BookOpen,
+    Newspaper,
+    FlaskConical,
+    GraduationCap,
+    Home,
+    Phone,
+    Mail,
+    MapPin,
 } from 'lucide-react';
 import React, { useState, useEffect } from 'react';
 import {
@@ -24,8 +35,14 @@ const navLinks = [
     { href: '/berita', label: 'Berita & Kegiatan', icon: Newspaper },
 ];
 
-export default function GuestLayout({ children }: { children: React.ReactNode }) {
-    const { auth } = usePage().props as { auth: { user: { name: string } | null } };
+export default function GuestLayout({
+    children,
+}: {
+    children: React.ReactNode;
+}) {
+    const { auth } = usePage().props as {
+        auth: { user: { name: string } | null };
+    };
     const [mobileOpen, setMobileOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
 
@@ -39,7 +56,6 @@ export default function GuestLayout({ children }: { children: React.ReactNode })
 
     return (
         <div className="flex min-h-screen flex-col bg-[#fefefe] font-sans text-[#332c2b] selection:bg-[#ffe100]/60 selection:text-[#332c2b]">
-
             {/* ── Top Bar ── */}
             <div className="hidden border-b border-gray-100 bg-[#1f5476] py-1.5 text-xs text-white/80 lg:block">
                 <div className="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-12">
@@ -48,14 +64,16 @@ export default function GuestLayout({ children }: { children: React.ReactNode })
                             <MapPin size={11} className="text-[#ffe100]" />
                             Jl. Karapitan No. 116, Bandung
                         </span>
-                        <span className="flex items-center gap-1.5">
+                        {/* <span className="flex items-center gap-1.5">
                             <Mail size={11} className="text-[#ffe100]" />
                             psk@unla.ac.id
-                        </span>
+                        </span> */}
                     </div>
                     <div className="flex items-center gap-1.5">
                         <GraduationCap size={11} className="text-[#ffe100]" />
-                        <span>Universitas Langlangbuana — Pusat Studi Kepolisian</span>
+                        <span>
+                            Universitas Langlangbuana — Pusat Studi Kepolisian
+                        </span>
                     </div>
                 </div>
             </div>
@@ -72,7 +90,10 @@ export default function GuestLayout({ children }: { children: React.ReactNode })
                     <PublicLogo />
 
                     {/* Desktop Nav */}
-                    <nav className="hidden items-center gap-1 md:flex" aria-label="Navigasi utama">
+                    <nav
+                        className="hidden items-center gap-1 md:flex"
+                        aria-label="Navigasi utama"
+                    >
                         {navLinks.map(({ href, label }) => (
                             <NavLink key={href} href={href}>
                                 {label}
@@ -96,28 +117,52 @@ export default function GuestLayout({ children }: { children: React.ReactNode })
                                     </span>
                                     <ChevronDown className="h-3.5 w-3.5 text-gray-400" />
                                 </DropdownMenuTrigger>
-                                <DropdownMenuContent align="end" className="w-56 rounded-xl border-gray-100 p-2 shadow-xl shadow-[#1f5476]/10">
-                                    <DropdownMenuLabel className="px-3 py-2 text-xs font-bold uppercase tracking-wider text-gray-400">
+                                <DropdownMenuContent
+                                    align="end"
+                                    className="w-56 rounded-xl border-gray-100 p-2 shadow-xl shadow-[#1f5476]/10"
+                                >
+                                    <DropdownMenuLabel className="px-3 py-2 text-xs font-bold tracking-wider text-gray-400 uppercase">
                                         Akun Saya
                                     </DropdownMenuLabel>
                                     <DropdownMenuSeparator className="bg-gray-100" />
                                     <DropdownMenuGroup>
-                                        <DropdownMenuItem asChild className="cursor-pointer rounded-lg px-3 py-2.5 text-sm font-medium focus:bg-gray-50 focus:text-[#2596be]">
-                                            <Link href="/settings/profile" className="flex w-full items-center">
+                                        <DropdownMenuItem
+                                            asChild
+                                            className="cursor-pointer rounded-lg px-3 py-2.5 text-sm font-medium focus:bg-gray-50 focus:text-[#2596be]"
+                                        >
+                                            <Link
+                                                href="/settings/profile"
+                                                className="flex w-full items-center"
+                                            >
                                                 <User className="mr-3 h-4 w-4" />
                                                 Profil Saya
                                             </Link>
                                         </DropdownMenuItem>
-                                        <DropdownMenuItem asChild className="cursor-pointer rounded-lg px-3 py-2.5 text-sm font-medium focus:bg-gray-50 focus:text-[#2596be]">
-                                            <Link href="/dashboard" className="flex w-full items-center">
+                                        <DropdownMenuItem
+                                            asChild
+                                            className="cursor-pointer rounded-lg px-3 py-2.5 text-sm font-medium focus:bg-gray-50 focus:text-[#2596be]"
+                                        >
+                                            <Link
+                                                href="/dashboard"
+                                                className="flex w-full items-center"
+                                            >
                                                 <Bookmark className="mr-3 h-4 w-4" />
                                                 Dashboard
                                             </Link>
                                         </DropdownMenuItem>
                                     </DropdownMenuGroup>
                                     <DropdownMenuSeparator className="bg-gray-100" />
-                                    <DropdownMenuItem asChild className="cursor-pointer rounded-lg px-3 py-2.5 text-sm font-medium text-red-600 focus:bg-red-50 focus:text-red-700">
-                                        <Link href={logout()} as="button" method="post" onClick={handleLogout} className="flex w-full items-center">
+                                    <DropdownMenuItem
+                                        asChild
+                                        className="cursor-pointer rounded-lg px-3 py-2.5 text-sm font-medium text-red-600 focus:bg-red-50 focus:text-red-700"
+                                    >
+                                        <Link
+                                            href={logout()}
+                                            as="button"
+                                            method="post"
+                                            onClick={handleLogout}
+                                            className="flex w-full items-center"
+                                        >
                                             <LogOut className="mr-3 h-4 w-4" />
                                             Keluar
                                         </Link>
@@ -183,17 +228,24 @@ export default function GuestLayout({ children }: { children: React.ReactNode })
                         <div>
                             <PublicLogo variant="dark" />
                             <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/60">
-                                Portal publikasi ilmiah Pusat Studi Kepolisian Universitas Langlangbuana — menyebarkan pengetahuan riset kepolisian untuk Indonesia.
+                                Portal publikasi ilmiah Pusat Studi Kepolisian
+                                Universitas Langlangbuana — menyebarkan
+                                pengetahuan riset kepolisian untuk Indonesia.
                             </p>
                         </div>
 
                         {/* Col 2 – Navigasi */}
                         <div>
-                            <h4 className="mb-4 text-xs font-bold uppercase tracking-widest text-[#ffe100]">Navigasi</h4>
+                            <h4 className="mb-4 text-xs font-bold tracking-widest text-[#ffe100] uppercase">
+                                Navigasi
+                            </h4>
                             <ul className="flex flex-col gap-2.5 text-sm">
                                 {navLinks.map(({ href, label }) => (
                                     <li key={href}>
-                                        <Link href={href} className="transition-colors hover:text-white">
+                                        <Link
+                                            href={href}
+                                            className="transition-colors hover:text-white"
+                                        >
                                             {label}
                                         </Link>
                                     </li>
@@ -203,18 +255,37 @@ export default function GuestLayout({ children }: { children: React.ReactNode })
 
                         {/* Col 3 – Kontak */}
                         <div>
-                            <h4 className="mb-4 text-xs font-bold uppercase tracking-widest text-[#ffe100]">Kontak</h4>
+                            <h4 className="mb-4 text-xs font-bold tracking-widest text-[#ffe100] uppercase">
+                                Kontak
+                            </h4>
                             <ul className="flex flex-col gap-3 text-sm">
                                 <li className="flex items-start gap-2">
-                                    <MapPin size={14} className="mt-0.5 shrink-0 text-[#ffe100]" />
-                                    <span>Jl. Karapitan No. 116, Bandung, Jawa Barat 40261</span>
+                                    <MapPin
+                                        size={14}
+                                        className="mt-0.5 shrink-0 text-[#ffe100]"
+                                    />
+                                    <span>
+                                        Jl. Karapitan No. 116, Bandung, Jawa
+                                        Barat 40261
+                                    </span>
                                 </li>
                                 <li className="flex items-center gap-2">
-                                    <Mail size={14} className="shrink-0 text-[#ffe100]" />
-                                    <a href="mailto:psk@unla.ac.id" className="hover:text-white transition-colors">psk@unla.ac.id</a>
+                                    <Mail
+                                        size={14}
+                                        className="shrink-0 text-[#ffe100]"
+                                    />
+                                    <a
+                                        href="mailto:psk@unla.ac.id"
+                                        className="transition-colors hover:text-white"
+                                    >
+                                        psk@unla.ac.id
+                                    </a>
                                 </li>
                                 <li className="flex items-center gap-2">
-                                    <Phone size={14} className="shrink-0 text-[#ffe100]" />
+                                    <Phone
+                                        size={14}
+                                        className="shrink-0 text-[#ffe100]"
+                                    />
                                     <span>(022) 4231948</span>
                                 </li>
                             </ul>
@@ -224,7 +295,9 @@ export default function GuestLayout({ children }: { children: React.ReactNode })
                     {/* Bottom bar */}
                     <div className="mt-12 flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-6 text-xs text-white/40 md:flex-row">
                         <span>
-                            &copy; {new Date().getFullYear()} Pusat Studi Kepolisian — Universitas Langlangbuana. All rights reserved.
+                            &copy; {new Date().getFullYear()} Pusat Studi
+                            Kepolisian — Universitas Langlangbuana. All rights
+                            reserved.
                         </span>
                         <div className="h-1 w-8 rounded-full bg-[#ffe100]" />
                     </div>
@@ -241,7 +314,8 @@ function NavLink({
     href: string;
     children: React.ReactNode;
 }) {
-    const isActive = typeof window !== 'undefined' && window.location.pathname === href;
+    const isActive =
+        typeof window !== 'undefined' && window.location.pathname === href;
 
     return (
         <Link
