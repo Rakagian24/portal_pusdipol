@@ -1,0 +1,65 @@
+name: Deploy to Hostinger
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4' # Laravel 11 requires PHP 8.2+
+
+      - name: Install Composer Dependencies
+        run: composer install --optimize-autoloader --no-dev --no-interaction --prefer-dist
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install NPM Dependencies & Build
+        run: |
+          npm install
+          npm run build
+
+      - name: Sync files to Hostinger via Rsync
+        env:
+          SSHPASS: ${{ secrets.HOSTINGER_PASSWORD }}
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y sshpass rsync
+
+          # We use sshpass to pass the password to rsync
+          sshpass -e rsync -avzh --delete \
+            --exclude='.git/' \
+            --exclude='.github/' \
+            --exclude='node_modules/' \
+            --exclude='.env' \
+            --exclude='tests/' \
+            --exclude='storage/framework/cache/data/*' \
+            --exclude='storage/framework/sessions/*' \
+            --exclude='storage/framework/views/*' \
+            --exclude='storage/logs/*' \
+            -e "ssh -p 65002 -o StrictHostKeyChecking=no" \
+            ./ u970231274@185.124.139.240:~/public_html/
+
+      - name: Run Artisan Commands on Hostinger
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: 185.124.139.240
+          username: u970231274
+          password: ${{ secrets.HOSTINGER_PASSWORD }}
+          port: 65002
+          script: |
+            cd public_html
+            php artisan optimize:clear
+            php artisan storage:link
+            php artisan migrate --force
