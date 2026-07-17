@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
@@ -21,7 +21,7 @@ jobs:
         run: composer install --optimize-autoloader --no-dev --no-interaction --prefer-dist
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6.4.0
         with:
           node-version: '20'
 
@@ -52,7 +52,7 @@ jobs:
             ./ u970231274@185.124.139.240:~/public_html/
 
       - name: Run Artisan Commands on Hostinger
-        uses: appleboy/ssh-action@v1.0.3
+        uses: appleboy/ssh-action@v1.2.5
         with:
           host: 185.124.139.240
           username: u970231274
