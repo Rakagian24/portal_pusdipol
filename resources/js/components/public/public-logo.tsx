@@ -11,7 +11,7 @@ export default function PublicLogo({ className = '', variant = 'light' }: Public
 
     return (
         <Link href="/" className={`group flex items-center gap-3 ${className}`}>
-            <img src="/images/logo.png" alt="Logo" className="h-10 w-10 object-contain transition-all duration-300 group-hover:scale-105" />
+            <img src="/images/logo.webp" alt="Logo" className="h-10 w-10 object-contain transition-all duration-300 group-hover:scale-105" />
             <div className="flex flex-col leading-none">
                 <span className={`text-[11px] font-semibold uppercase tracking-widest opacity-70 ${textColor}`}>
                     Pusat Studi Kepolisian
