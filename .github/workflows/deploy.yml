@@ -2,39 +2,61 @@ name: Deploy Laravel + Vite
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
+
+concurrency:
+  group: production
+  cancel-in-progress: true
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      - name: Checkout Repository
         uses: actions/checkout@v4
 
+      ##################################
+      # PHP
+      ##################################
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.4'
           tools: composer:v2
-          extensions: mbstring, bcmath, pdo_mysql
+          extensions: mbstring, bcmath, intl, pdo_mysql, zip
 
+      - name: Cache Composer
+        uses: actions/cache@v4
+        with:
+          path: ~/.composer/cache
+          key: composer-${{ runner.os }}-${{ hashFiles('composer.lock') }}
+          restore-keys: |
+            composer-${{ runner.os }}-
+
+      - name: Install Composer Dependencies
+        run: composer install --no-dev --prefer-dist --optimize-autoloader
+
+      ##################################
+      # Node
+      ##################################
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: '24'
           cache: npm
 
-      - name: Install PHP deps
-        run: composer install --no-dev --prefer-dist --optimize-autoloader
-
-      - name: Install JS deps
+      - name: Install NPM Packages
         run: npm ci
 
-      - name: Build Vite
+      - name: Build Assets
         run: npm run build
 
-      - name: Add SSH key
+      ##################################
+      # SSH
+      ##################################
+      - name: Load SSH Key
         uses: webfactory/ssh-agent@v0.9.0
         with:
           ssh-private-key: ${{ secrets.DEPLOY_SSH_KEY }}
@@ -44,12 +66,45 @@ jobs:
           mkdir -p ~/.ssh
           ssh-keyscan -p ${{ secrets.DEPLOY_PORT }} ${{ secrets.DEPLOY_HOST }} >> ~/.ssh/known_hosts
 
-      - name: Upload to Hostinger
+      ##################################
+      # Upload
+      ##################################
+      - name: Sync Files
         run: |
-          rsync -az \
+          rsync -az --delete \
             -e "ssh -p ${{ secrets.DEPLOY_PORT }}" \
-            --exclude '.git/' \
-            --exclude '.github/' \
-            --exclude 'node_modules/' \
-            --exclude '.env' \
-            ./ ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}:${{ secrets.DEPLOY_PATH }}
+            --exclude ".git" \
+            --exclude ".github" \
+            --exclude ".env" \
+            --exclude "node_modules" \
+            --exclude "vendor" \
+            --exclude "storage/logs" \
+            ./ \
+            ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}:${{ secrets.DEPLOY_PATH }}
+
+      ##################################
+      # Laravel
+      ##################################
+      - name: Run Laravel Commands
+        run: |
+          ssh -p ${{ secrets.DEPLOY_PORT }} \
+          ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} << 'EOF'
+
+          set -e
+
+          cd ${{ secrets.DEPLOY_PATH }}
+
+          composer install \
+            --no-dev \
+            --prefer-dist \
+            --optimize-autoloader \
+            --no-interaction
+
+          php artisan migrate --force
+
+          php artisan optimize:clear
+          php artisan optimize
+
+          php artisan storage:link || true
+
+          EOF

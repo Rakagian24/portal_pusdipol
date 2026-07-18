@@ -15,6 +15,7 @@ use App\Http\Controllers\Settings\SecurityController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/cari', [SearchController::class, 'index'])->name('search.index');
+Route::inertia('/tentang-kami', 'about')->name('about');
 
 // Katalog Buku
 Route::prefix('buku')->name('books.')->group(function () {

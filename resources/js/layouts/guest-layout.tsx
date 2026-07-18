@@ -14,6 +14,7 @@ import {
     Phone,
     Mail,
     MapPin,
+    Info,
 } from 'lucide-react';
 import React, { useState, useEffect } from 'react';
 import {
@@ -33,6 +34,7 @@ const navLinks = [
     { href: '/jurnal', label: 'Jurnal Ilmiah', icon: FlaskConical },
     { href: '/buku', label: 'Katalog Buku', icon: BookOpen },
     { href: '/berita', label: 'Berita & Kegiatan', icon: Newspaper },
+    { href: '/tentang-kami', label: 'Tentang Kami', icon: Info },
 ];
 
 export default function GuestLayout({

@@ -12,7 +12,7 @@ createInertiaApp({
     title: (title) => (title ? `${title} - ${appName}` : appName),
     layout: (name) => {
         switch (true) {
-            case name === 'welcome' || name === 'home':
+            case name === 'welcome' || name === 'home' || name === 'about':
             case name.startsWith('books/'):
             case name.startsWith('posts/'):
             case name.startsWith('journals/'):
