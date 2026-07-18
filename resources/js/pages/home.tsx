@@ -115,8 +115,7 @@ export default function Home({
                             Portal Publikasi
                             <br />
                             <span className="text-[#2596be]">
-                                {' '}
-                                TEST Pusat Studi
+                                Pusat Studi
                             </span>{' '}
                             <span className="text-[#ffe100]">Kepolisian</span>
                         </h1>
