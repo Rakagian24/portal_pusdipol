@@ -39,6 +39,13 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.DEPLOY_SSH_KEY }}
 
+      - name: Debug Secrets
+        run: |
+          echo "HOST=[${{ secrets.DEPLOY_HOST }}]"
+          echo "PORT=[${{ secrets.DEPLOY_PORT }}]"
+          echo "USER=[${{ secrets.DEPLOY_USER }}]"
+          echo "PATH=[${{ secrets.DEPLOY_PATH }}]"
+
       - name: Upload to Hostinger
         run: |
           rsync -az \
