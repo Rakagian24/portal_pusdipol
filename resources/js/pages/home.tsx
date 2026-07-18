@@ -1,5 +1,14 @@
 import { Head, Link } from '@inertiajs/react';
-import { Search, BookOpen, Newspaper, FlaskConical, ArrowRight, Users, FileText, Library } from 'lucide-react';
+import {
+    Search,
+    BookOpen,
+    Newspaper,
+    FlaskConical,
+    ArrowRight,
+    Users,
+    FileText,
+    Library,
+} from 'lucide-react';
 import { useState } from 'react';
 import { router } from '@inertiajs/react';
 import GuestLayout from '@/layouts/guest-layout';
@@ -44,7 +53,11 @@ interface Props {
     latestArticles: Article[];
 }
 
-export default function Home({ latestBooks, latestPosts, latestArticles }: Props) {
+export default function Home({
+    latestBooks,
+    latestPosts,
+    latestArticles,
+}: Props) {
     const [searchQuery, setSearchQuery] = useState('');
 
     const handleSearch = (e: React.FormEvent) => {
@@ -62,10 +75,24 @@ export default function Home({ latestBooks, latestPosts, latestArticles }: Props
             <section className="relative overflow-hidden bg-[#1f5476]">
                 {/* Background pattern */}
                 <div className="pointer-events-none absolute inset-0 opacity-5">
-                    <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                    <svg
+                        width="100%"
+                        height="100%"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
                         <defs>
-                            <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-                                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" strokeWidth="1" />
+                            <pattern
+                                id="grid"
+                                width="40"
+                                height="40"
+                                patternUnits="userSpaceOnUse"
+                            >
+                                <path
+                                    d="M 40 0 L 0 0 0 40"
+                                    fill="none"
+                                    stroke="white"
+                                    strokeWidth="1"
+                                />
                             </pattern>
                         </defs>
                         <rect width="100%" height="100%" fill="url(#grid)" />
@@ -79,30 +106,44 @@ export default function Home({ latestBooks, latestPosts, latestArticles }: Props
                 <div className="relative mx-auto max-w-7xl px-6 py-24 lg:px-12 lg:py-32">
                     <div className="max-w-3xl">
                         {/* Eyebrow */}
-                        <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#ffe100]/30 bg-[#ffe100]/10 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-[#ffe100]">
+                        <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#ffe100]/30 bg-[#ffe100]/10 px-4 py-1.5 text-xs font-bold tracking-widest text-[#ffe100] uppercase">
                             <GraduationCapIcon size={12} />
                             Universitas Langlangbuana
                         </div>
 
-                        <h1 className="text-4xl font-extrabold leading-tight tracking-tight text-white md:text-5xl lg:text-6xl">
-                            Portal Publikasi<br />
-                            <span className="text-[#2596be]">Pusat Studi</span>{' '}
+                        <h1 className="text-4xl leading-tight font-extrabold tracking-tight text-white md:text-5xl lg:text-6xl">
+                            Portal Publikasi
+                            <br />
+                            <span className="text-[#2596be]">
+                                {' '}
+                                TEST Pusat Studi
+                            </span>{' '}
                             <span className="text-[#ffe100]">Kepolisian</span>
                         </h1>
                         <p className="mt-5 max-w-xl text-lg leading-relaxed text-white/70">
-                            Akses jurnal ilmiah, katalog buku, dan berita riset kepolisian dari Universitas Langlangbuana secara terbuka.
+                            Akses jurnal ilmiah, katalog buku, dan berita riset
+                            kepolisian dari Universitas Langlangbuana secara
+                            terbuka.
                         </p>
 
                         {/* Search */}
-                        <form onSubmit={handleSearch} className="mt-8 flex max-w-lg gap-2">
+                        <form
+                            onSubmit={handleSearch}
+                            className="mt-8 flex max-w-lg gap-2"
+                        >
                             <div className="relative flex-1">
-                                <Search size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
+                                <Search
+                                    size={16}
+                                    className="absolute top-1/2 left-4 -translate-y-1/2 text-gray-400"
+                                />
                                 <input
                                     type="text"
                                     placeholder="Cari buku, jurnal, atau berita..."
                                     value={searchQuery}
-                                    onChange={(e) => setSearchQuery(e.target.value)}
-                                    className="h-12 w-full rounded-xl border border-white/20 bg-white/10 pl-10 pr-4 text-sm text-white placeholder-white/50 backdrop-blur-sm transition focus:border-[#ffe100] focus:bg-white/20 focus:outline-none focus:ring-2 focus:ring-[#ffe100]/30"
+                                    onChange={(e) =>
+                                        setSearchQuery(e.target.value)
+                                    }
+                                    className="h-12 w-full rounded-xl border border-white/20 bg-white/10 pr-4 pl-10 text-sm text-white placeholder-white/50 backdrop-blur-sm transition focus:border-[#ffe100] focus:bg-white/20 focus:ring-2 focus:ring-[#ffe100]/30 focus:outline-none"
                                 />
                             </div>
                             <button
@@ -139,18 +180,40 @@ export default function Home({ latestBooks, latestPosts, latestArticles }: Props
                 <div className="mx-auto max-w-7xl px-6 py-5 lg:px-12">
                     <div className="grid grid-cols-2 gap-6 sm:grid-cols-4">
                         {[
-                            { icon: FlaskConical, value: latestArticles.length > 0 ? '50+' : '0', label: 'Artikel Jurnal' },
-                            { icon: Library, value: `${latestBooks.length}+`, label: 'Koleksi Buku' },
-                            { icon: Newspaper, value: `${latestPosts.length}+`, label: 'Berita & Kegiatan' },
+                            {
+                                icon: FlaskConical,
+                                value: latestArticles.length > 0 ? '50+' : '0',
+                                label: 'Artikel Jurnal',
+                            },
+                            {
+                                icon: Library,
+                                value: `${latestBooks.length}+`,
+                                label: 'Koleksi Buku',
+                            },
+                            {
+                                icon: Newspaper,
+                                value: `${latestPosts.length}+`,
+                                label: 'Berita & Kegiatan',
+                            },
                             { icon: Users, value: '2+', label: 'Jurnal Aktif' },
                         ].map(({ icon: Icon, value, label }) => (
-                            <div key={label} className="flex items-center gap-3">
+                            <div
+                                key={label}
+                                className="flex items-center gap-3"
+                            >
                                 <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#1f5476]/10">
-                                    <Icon size={20} className="text-[#1f5476]" />
+                                    <Icon
+                                        size={20}
+                                        className="text-[#1f5476]"
+                                    />
                                 </div>
                                 <div>
-                                    <div className="text-xl font-extrabold leading-none text-[#1f5476]">{value}</div>
-                                    <div className="mt-0.5 text-xs font-semibold text-[#1f5476]/70">{label}</div>
+                                    <div className="text-xl leading-none font-extrabold text-[#1f5476]">
+                                        {value}
+                                    </div>
+                                    <div className="mt-0.5 text-xs font-semibold text-[#1f5476]/70">
+                                        {label}
+                                    </div>
                                 </div>
                             </div>
                         ))}
@@ -170,7 +233,10 @@ export default function Home({ latestBooks, latestPosts, latestArticles }: Props
                         />
                         <div className="space-y-3">
                             {latestArticles.slice(0, 4).map((article) => (
-                                <PublicArticleCard key={article.id} article={article} />
+                                <PublicArticleCard
+                                    key={article.id}
+                                    article={article}
+                                />
                             ))}
                         </div>
                         <div className="mt-8 text-center">
@@ -232,12 +298,16 @@ export default function Home({ latestBooks, latestPosts, latestArticles }: Props
             {/* ─────────────────────── CTA BOTTOM ─────────────────────── */}
             <section className="bg-[#2596be] py-14">
                 <div className="mx-auto max-w-7xl px-6 text-center lg:px-12">
-                    <FileText size={36} className="mx-auto mb-4 text-white/60" />
+                    <FileText
+                        size={36}
+                        className="mx-auto mb-4 text-white/60"
+                    />
                     <h2 className="text-2xl font-extrabold text-white md:text-3xl">
                         Ingin mempublikasikan penelitian Anda?
                     </h2>
                     <p className="mx-auto mt-3 max-w-xl text-white/80">
-                        Daftarkan diri dan submit artikel ke jurnal Pusat Studi Kepolisian Universitas Langlangbuana.
+                        Daftarkan diri dan submit artikel ke jurnal Pusat Studi
+                        Kepolisian Universitas Langlangbuana.
                     </p>
                     <div className="mt-6 flex justify-center gap-4">
                         <Link
@@ -262,7 +332,16 @@ export default function Home({ latestBooks, latestPosts, latestArticles }: Props
 // Inline icon (avoid separate import for simple usage)
 function GraduationCapIcon({ size }: { size: number }) {
     return (
-        <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+        <svg
+            width={size}
+            height={size}
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+        >
             <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
             <path d="M6 12v5c3 3 9 3 12 0v-5" />
         </svg>

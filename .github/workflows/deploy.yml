@@ -44,13 +44,6 @@ jobs:
           mkdir -p ~/.ssh
           ssh-keyscan -p ${{ secrets.DEPLOY_PORT }} ${{ secrets.DEPLOY_HOST }} >> ~/.ssh/known_hosts
 
-      - name: Debug Secrets
-        run: |
-          echo "HOST=[${{ secrets.DEPLOY_HOST }}]"
-          echo "PORT=[${{ secrets.DEPLOY_PORT }}]"
-          echo "USER=[${{ secrets.DEPLOY_USER }}]"
-          echo "PATH=[${{ secrets.DEPLOY_PATH }}]"
-
       - name: Upload to Hostinger
         run: |
           rsync -az \
