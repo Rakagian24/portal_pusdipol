@@ -15,14 +15,14 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: &apos;8.2&apos;
+          php-version: '8.2'
           tools: composer:v2
           extensions: mbstring, bcmath, pdo_mysql
 
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: &apos;20&apos;
+          node-version: '20'
           cache: npm
 
       - name: Install PHP deps
@@ -43,8 +43,8 @@ jobs:
         run: |
           rsync -az \
             -e "ssh -p ${{ secrets.DEPLOY_PORT }}" \
-            --exclude &apos;.git/&apos; \
-            --exclude &apos;.github/&apos; \
-            --exclude &apos;node_modules/&apos; \
-            --exclude &apos;.env&apos; \
+            --exclude '.git/' \
+            --exclude '.github/' \
+            --exclude 'node_modules/' \
+            --exclude '.env' \
             ./ ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}:${{ secrets.DEPLOY_PATH }}
