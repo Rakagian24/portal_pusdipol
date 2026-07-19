@@ -130,7 +130,6 @@ export default function About() {
                     </p>
                     <div className="grid gap-6 sm:grid-cols-2">
                         <div className="flex gap-4 rounded-2xl border border-gray-100 bg-white p-6 shadow-sm transition-all hover:border-[#2596be]/30 hover:shadow-md">
-                            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#2596be]/10 text-[#2596be]"></div>
                             <div>
                                 <h3 className="font-bold text-[#1f5476]">
                                     Kedudukan
@@ -146,7 +145,6 @@ export default function About() {
                             </div>
                         </div>
                         <div className="flex gap-4 rounded-2xl border border-gray-100 bg-white p-6 shadow-sm transition-all hover:border-[#2596be]/30 hover:shadow-md">
-                            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#2596be]/10 text-[#2596be]"></div>
                             <div>
                                 <h3 className="font-bold text-[#1f5476]">
                                     Kepemimpinan
