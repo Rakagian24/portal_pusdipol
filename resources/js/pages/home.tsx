@@ -1,5 +1,5 @@
 import { Head, Link } from '@inertiajs/react';
-
+import { Search } from 'lucide-react';
 import { useState } from 'react';
 import { router } from '@inertiajs/react';
 import GuestLayout from '@/layouts/guest-layout';
@@ -122,9 +122,7 @@ export default function Home({
                             className="mt-8 flex max-w-lg gap-2"
                         >
                             <div className="relative flex-1">
-                                <div className="absolute top-1/2 left-4 -translate-y-1/2 text-gray-400 font-bold text-xs">
-                                    CARI
-                                </div>
+                                <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-white/50" />
                                 <input
                                     type="text"
                                     placeholder="Cari buku, jurnal, atau berita..."

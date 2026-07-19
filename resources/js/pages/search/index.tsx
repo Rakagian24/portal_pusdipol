@@ -1,5 +1,5 @@
 import { Head, Link, router } from '@inertiajs/react';
-
+import { Search } from 'lucide-react';
 import { useState, FormEvent } from 'react';
 import GuestLayout from '@/layouts/guest-layout';
 import PublicBookCard from '@/components/public/public-book-card';
@@ -83,7 +83,7 @@ export default function SearchIndex({ query: initialQuery, results, totalResults
 
                     <form onSubmit={handleSearch} className="mx-auto mt-8 flex max-w-2xl gap-2">
                         <div className="relative flex-1">
-                            <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-xs font-bold">CARI</div>
+                            <Search size={22} className="absolute left-4 top-1/2 -translate-y-1/2 text-white/50" />
                             <input
                                 type="text"
                                 placeholder="Ketik kata kunci pencarian..."

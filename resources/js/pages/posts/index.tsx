@@ -1,9 +1,16 @@
 import { Head, router } from '@inertiajs/react';
-
+import { Search, SlidersHorizontal, ChevronDown } from 'lucide-react';
 import GuestLayout from '@/layouts/guest-layout';
 import PublicSectionHeader from '@/components/public/public-section-header';
 import PublicPostCard from '@/components/public/public-post-card';
 import PublicPagination from '@/components/public/public-pagination';
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from "@/components/ui/select";
 
 interface Post {
     id: number;
@@ -61,7 +68,7 @@ export default function PostsIndex({ posts, categories, filters }: Props) {
                     {/* Filters */}
                     <div className="mt-8 flex flex-wrap gap-3">
                         <div className="relative flex-1 min-w-[200px] max-w-sm">
-
+                            <Search size={15} className="absolute left-4 top-1/2 -translate-y-1/2 text-white/50" />
                             <input
                                 type="text"
                                 placeholder="Cari berita..."
@@ -71,20 +78,26 @@ export default function PostsIndex({ posts, categories, filters }: Props) {
                             />
                         </div>
 
-                        <div className="relative">
-
-                            <select
-                                defaultValue={filters?.category ?? ''}
-                                onChange={(e) => handleCategory(e.target.value)}
-                                className="h-11 appearance-none rounded-xl border border-white/20 bg-white/10 pl-9 pr-9 text-sm text-white backdrop-blur-sm transition focus:border-[#ffe100] focus:outline-none focus:ring-2 focus:ring-[#ffe100]/30"
+                        <div className="relative w-full sm:w-[220px]">
+                            <Select
+                                value={filters?.category ?? 'all'}
+                                onValueChange={(val) => handleCategory(val === 'all' ? '' : val)}
                             >
-                                <option value="" className="text-gray-800">Semua Kategori</option>
-                                {categories.map((c) => (
-                                    <option key={c.id} value={c.id} className="text-gray-800">
-                                        {c.name}
-                                    </option>
-                                ))}
-                            </select>
+                                <SelectTrigger className="h-11 w-full rounded-xl border-white/20 bg-white/10 text-white hover:bg-white/20 focus:ring-[#ffe100]/30 focus:border-[#ffe100] backdrop-blur-sm transition">
+                                    <div className="flex items-center gap-2">
+                                        <SlidersHorizontal size={14} className="text-white/50" />
+                                        <SelectValue placeholder="Semua Kategori" />
+                                    </div>
+                                </SelectTrigger>
+                                <SelectContent>
+                                    <SelectItem value="all">Semua Kategori</SelectItem>
+                                    {categories.map((c) => (
+                                        <SelectItem key={c.id} value={String(c.id)}>
+                                            {c.name}
+                                        </SelectItem>
+                                    ))}
+                                </SelectContent>
+                            </Select>
                         </div>
                     </div>
                 </div>
