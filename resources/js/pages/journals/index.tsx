@@ -1,5 +1,5 @@
 import { Head, Link } from '@inertiajs/react';
-import { ExternalLink, BookOpen, FileText } from 'lucide-react';
+
 import GuestLayout from '@/layouts/guest-layout';
 import PublicSectionHeader from '@/components/public/public-section-header';
 
@@ -21,7 +21,7 @@ export default function JournalsIndex({ journals }: { journals: Journal[] }) {
             <section className="bg-[#1f5476] py-14">
                 <div className="mx-auto max-w-7xl px-6 lg:px-12">
                     <div className="flex items-center gap-3 text-[#ffe100] text-xs font-bold uppercase tracking-widest mb-3">
-                        <FileText size={14} />
+
                         Publikasi Ilmiah
                     </div>
                     <h1 className="text-4xl font-extrabold text-white">Jurnal Ilmiah</h1>
@@ -40,7 +40,7 @@ export default function JournalsIndex({ journals }: { journals: Journal[] }) {
 
                 {journals.length === 0 ? (
                     <div className="py-24 text-center text-gray-400">
-                        <BookOpen size={48} className="mx-auto mb-4 opacity-30" />
+
                         <p className="font-medium">Belum ada jurnal tersedia.</p>
                     </div>
                 ) : (
@@ -60,7 +60,7 @@ export default function JournalsIndex({ journals }: { journals: Journal[] }) {
                                         />
                                     ) : (
                                         <div className="flex h-20 w-20 items-center justify-center rounded-xl bg-gradient-to-br from-[#1f5476] to-[#2596be] text-white">
-                                            <BookOpen size={28} strokeWidth={1.5} />
+                                            <span className="text-xs text-white/60">Jurnal</span>
                                         </div>
                                     )}
                                 </div>
@@ -83,7 +83,7 @@ export default function JournalsIndex({ journals }: { journals: Journal[] }) {
                                             <div className="mt-4 flex flex-wrap items-center gap-4">
                                                 {/* Article count badge */}
                                                 <span className="inline-flex items-center gap-1.5 rounded-full bg-[#2596be]/10 px-3 py-1 text-xs font-bold text-[#2596be]">
-                                                    <FileText size={11} />
+
                                                     {journal.articles_count} Artikel
                                                 </span>
 
@@ -100,7 +100,7 @@ export default function JournalsIndex({ journals }: { journals: Journal[] }) {
                                                     rel="noopener noreferrer"
                                                     className="inline-flex items-center gap-1.5 rounded-lg border border-gray-200 px-4 py-2 text-xs font-semibold text-gray-600 transition hover:border-[#2596be] hover:text-[#2596be]"
                                                 >
-                                                    <ExternalLink size={11} />
+
                                                     Buka di OJS
                                                 </a>
                                             </div>

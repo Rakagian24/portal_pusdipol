@@ -1,5 +1,5 @@
 import { Head, Link } from '@inertiajs/react';
-import { Download, BookOpen, ChevronRight, User, Hash, Calendar, Tag } from 'lucide-react';
+
 import GuestLayout from '@/layouts/guest-layout';
 
 interface Book {
@@ -24,9 +24,9 @@ export default function BookShow({ book }: { book: Book }) {
                 <div className="mx-auto max-w-7xl">
                     <nav className="flex items-center gap-1.5 text-xs text-gray-500">
                         <Link href="/" className="hover:text-[#2596be] transition-colors">Beranda</Link>
-                        <ChevronRight size={12} />
+                        <span className="text-gray-400">/</span>
                         <Link href="/buku" className="hover:text-[#2596be] transition-colors">Katalog Buku</Link>
-                        <ChevronRight size={12} />
+                        <span className="text-gray-400">/</span>
                         <span className="text-gray-800 font-medium line-clamp-1 max-w-xs">{book.title}</span>
                     </nav>
                 </div>
@@ -47,7 +47,7 @@ export default function BookShow({ book }: { book: Book }) {
                                 />
                             ) : (
                                 <div className="flex h-full w-full flex-col items-center justify-center gap-4 bg-gradient-to-br from-[#1f5476] to-[#2596be] text-white">
-                                    <BookOpen size={48} strokeWidth={1.5} className="opacity-60" />
+
                                     <span className="px-4 text-center text-sm font-medium opacity-70 leading-tight">
                                         {book.title}
                                     </span>
@@ -63,7 +63,7 @@ export default function BookShow({ book }: { book: Book }) {
                                 rel="noopener noreferrer"
                                 className="mt-5 flex items-center justify-center gap-2.5 w-full rounded-xl bg-[#e62129] px-4 py-3.5 font-bold text-white shadow-lg shadow-[#e62129]/30 transition hover:-translate-y-0.5 hover:bg-[#c01820] hover:shadow-xl"
                             >
-                                <Download size={18} />
+
                                 Unduh PDF
                             </a>
                         )}
@@ -72,13 +72,13 @@ export default function BookShow({ book }: { book: Book }) {
                         <div className="mt-5 rounded-xl border border-gray-100 bg-white p-5 shadow-sm">
                             <h3 className="mb-3 text-xs font-bold uppercase tracking-widest text-gray-400">Informasi Buku</h3>
                             <dl className="space-y-3 text-sm">
-                                <MetaRow icon={User} label="Penulis" value={book.author} />
-                                {book.isbn && <MetaRow icon={Hash} label="ISBN" value={book.isbn} />}
+                                <MetaRow label="Penulis" value={book.author} />
+                                {book.isbn && <MetaRow label="ISBN" value={book.isbn} />}
                                 {book.published_year && (
-                                    <MetaRow icon={Calendar} label="Tahun Terbit" value={String(book.published_year)} />
+                                    <MetaRow label="Tahun Terbit" value={String(book.published_year)} />
                                 )}
                                 {book.category && (
-                                    <MetaRow icon={Tag} label="Kategori" value={book.category.name} />
+                                    <MetaRow label="Kategori" value={book.category.name} />
                                 )}
                             </dl>
                         </div>
@@ -89,7 +89,7 @@ export default function BookShow({ book }: { book: Book }) {
                         {/* Category badge */}
                         {book.category && (
                             <span className="inline-flex items-center gap-1.5 rounded-full bg-[#2596be]/10 px-3 py-1 text-xs font-bold text-[#2596be]">
-                                <Tag size={10} />
+
                                 {book.category.name}
                             </span>
                         )}
@@ -100,12 +100,12 @@ export default function BookShow({ book }: { book: Book }) {
 
                         <div className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-gray-500">
                             <span className="flex items-center gap-1.5">
-                                <User size={13} />
+
                                 {book.author}
                             </span>
                             {book.published_year && (
                                 <span className="flex items-center gap-1.5">
-                                    <Calendar size={13} />
+
                                     {book.published_year}
                                 </span>
                             )}
@@ -145,19 +145,14 @@ export default function BookShow({ book }: { book: Book }) {
 }
 
 function MetaRow({
-    icon: Icon,
     label,
     value,
 }: {
-    icon: React.ElementType;
     label: string;
     value: string;
 }) {
     return (
         <div className="flex items-start gap-2.5">
-            <div className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded bg-[#2596be]/10">
-                <Icon size={11} className="text-[#2596be]" />
-            </div>
             <div>
                 <dt className="text-xs text-gray-400">{label}</dt>
                 <dd className="font-semibold text-[#1f5476]">{value}</dd>

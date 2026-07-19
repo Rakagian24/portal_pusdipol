@@ -1,5 +1,5 @@
 import { Head, Link, router } from '@inertiajs/react';
-import { Search, BookOpen, Newspaper, FlaskConical, AlertCircle } from 'lucide-react';
+
 import { useState, FormEvent } from 'react';
 import GuestLayout from '@/layouts/guest-layout';
 import PublicBookCard from '@/components/public/public-book-card';
@@ -83,7 +83,7 @@ export default function SearchIndex({ query: initialQuery, results, totalResults
 
                     <form onSubmit={handleSearch} className="mx-auto mt-8 flex max-w-2xl gap-2">
                         <div className="relative flex-1">
-                            <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
+                            <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-xs font-bold">CARI</div>
                             <input
                                 type="text"
                                 placeholder="Ketik kata kunci pencarian..."
@@ -107,12 +107,12 @@ export default function SearchIndex({ query: initialQuery, results, totalResults
             <section className="mx-auto max-w-7xl px-6 py-14 lg:px-12">
                 {!hasSearch ? (
                     <div className="flex flex-col items-center justify-center py-20 text-gray-400">
-                        <Search size={48} className="mb-4 opacity-20" />
+
                         <p className="text-lg font-medium text-gray-500">Silakan masukkan kata kunci pencarian</p>
                     </div>
                 ) : !hasResults ? (
                     <div className="flex flex-col items-center justify-center py-20 text-gray-400">
-                        <AlertCircle size={48} className="mb-4 text-[#e62129]/40" />
+
                         <p className="text-lg font-medium text-gray-800">Tidak ada hasil ditemukan</p>
                         <p className="mt-1 text-sm text-gray-500">Kami tidak dapat menemukan data untuk kata kunci "{initialQuery}". Coba kata kunci yang lain.</p>
                     </div>
@@ -126,7 +126,7 @@ export default function SearchIndex({ query: initialQuery, results, totalResults
                         {results.articles.length > 0 && (
                             <div>
                                 <div className="mb-6 flex items-center gap-2 border-b border-gray-100 pb-3">
-                                    <FlaskConical size={20} className="text-[#2596be]" />
+
                                     <h2 className="text-2xl font-bold text-[#1f5476]">Artikel Jurnal ({results.articles.length})</h2>
                                 </div>
                                 <div className="space-y-3">
@@ -141,7 +141,7 @@ export default function SearchIndex({ query: initialQuery, results, totalResults
                         {results.books.length > 0 && (
                             <div>
                                 <div className="mb-6 flex items-center gap-2 border-b border-gray-100 pb-3">
-                                    <BookOpen size={20} className="text-[#2596be]" />
+
                                     <h2 className="text-2xl font-bold text-[#1f5476]">Buku Publikasi ({results.books.length})</h2>
                                 </div>
                                 <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
@@ -156,7 +156,7 @@ export default function SearchIndex({ query: initialQuery, results, totalResults
                         {results.posts.length > 0 && (
                             <div>
                                 <div className="mb-6 flex items-center gap-2 border-b border-gray-100 pb-3">
-                                    <Newspaper size={20} className="text-[#2596be]" />
+
                                     <h2 className="text-2xl font-bold text-[#1f5476]">Berita & Kegiatan ({results.posts.length})</h2>
                                 </div>
                                 <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">

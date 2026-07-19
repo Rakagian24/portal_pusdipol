@@ -1,5 +1,5 @@
 import { Head } from '@inertiajs/react';
-import { Target, History, Users, ArrowRight } from 'lucide-react';
+
 import GuestLayout from '@/layouts/guest-layout';
 
 export default function About() {
@@ -27,7 +27,7 @@ export default function About() {
                 <div className="mb-20">
                     <div className="mb-8 flex items-center gap-4">
                         <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#2596be]/10 text-[#2596be]">
-                            <Target size={24} />
+
                         </div>
                         <h2 className="text-3xl font-bold text-[#1f5476]">Fokus & Visi</h2>
                     </div>
@@ -52,7 +52,7 @@ export default function About() {
                 <div className="mb-20 rounded-3xl bg-gray-50 p-8 sm:p-12">
                     <div className="mb-8 flex items-center gap-4">
                         <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#ffe100]/20 text-[#d4b900]">
-                            <History size={24} />
+
                         </div>
                         <h2 className="text-3xl font-bold text-[#1f5476]">Sejarah Pembentukan</h2>
                     </div>
@@ -77,7 +77,7 @@ export default function About() {
                 <div>
                     <div className="mb-8 flex items-center gap-4">
                         <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#2596be]/10 text-[#2596be]">
-                            <Users size={24} />
+
                         </div>
                         <h2 className="text-3xl font-bold text-[#1f5476]">Struktur Organisasi</h2>
                     </div>
@@ -87,7 +87,7 @@ export default function About() {
                     <div className="grid gap-6 sm:grid-cols-2">
                         <div className="flex gap-4 rounded-2xl border border-gray-100 bg-white p-6 shadow-sm transition-all hover:border-[#2596be]/30 hover:shadow-md">
                             <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#2596be]/10 text-[#2596be]">
-                                <ArrowRight size={20} />
+
                             </div>
                             <div>
                                 <h3 className="font-bold text-[#1f5476]">Kedudukan</h3>
@@ -98,7 +98,7 @@ export default function About() {
                         </div>
                         <div className="flex gap-4 rounded-2xl border border-gray-100 bg-white p-6 shadow-sm transition-all hover:border-[#2596be]/30 hover:shadow-md">
                             <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#2596be]/10 text-[#2596be]">
-                                <ArrowRight size={20} />
+
                             </div>
                             <div>
                                 <h3 className="font-bold text-[#1f5476]">Kepemimpinan</h3>

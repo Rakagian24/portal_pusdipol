@@ -1,5 +1,5 @@
 import { Head, router } from '@inertiajs/react';
-import { Search, Newspaper, SlidersHorizontal, ChevronDown } from 'lucide-react';
+
 import GuestLayout from '@/layouts/guest-layout';
 import PublicSectionHeader from '@/components/public/public-section-header';
 import PublicPostCard from '@/components/public/public-post-card';
@@ -50,7 +50,7 @@ export default function PostsIndex({ posts, categories, filters }: Props) {
             <section className="bg-[#1f5476] py-14">
                 <div className="mx-auto max-w-7xl px-6 lg:px-12">
                     <div className="flex items-center gap-2 text-[#ffe100] text-xs font-bold uppercase tracking-widest mb-3">
-                        <Newspaper size={14} />
+
                         Informasi Terkini
                     </div>
                     <h1 className="text-4xl font-extrabold text-white">Berita & Kegiatan</h1>
@@ -61,7 +61,7 @@ export default function PostsIndex({ posts, categories, filters }: Props) {
                     {/* Filters */}
                     <div className="mt-8 flex flex-wrap gap-3">
                         <div className="relative flex-1 min-w-[200px] max-w-sm">
-                            <Search size={15} className="absolute left-4 top-1/2 -translate-y-1/2 text-white/50" />
+
                             <input
                                 type="text"
                                 placeholder="Cari berita..."
@@ -72,8 +72,7 @@ export default function PostsIndex({ posts, categories, filters }: Props) {
                         </div>
 
                         <div className="relative">
-                            <SlidersHorizontal size={14} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-white/50" />
-                            <ChevronDown size={14} className="absolute right-3.5 top-1/2 -translate-y-1/2 text-white/50 pointer-events-none" />
+
                             <select
                                 defaultValue={filters?.category ?? ''}
                                 onChange={(e) => handleCategory(e.target.value)}
@@ -104,7 +103,7 @@ export default function PostsIndex({ posts, categories, filters }: Props) {
 
                 {posts.data.length === 0 ? (
                     <div className="py-24 text-center text-gray-400">
-                        <Newspaper size={48} className="mx-auto mb-4 opacity-30" />
+
                         <p className="font-medium">Tidak ada berita ditemukan.</p>
                         <p className="mt-1 text-sm">Coba ubah kata kunci atau kategori pencarian.</p>
                     </div>

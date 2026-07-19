@@ -1,5 +1,5 @@
 import { Link } from '@inertiajs/react';
-import { BookOpen } from 'lucide-react';
+
 
 interface Book {
     id: number;
@@ -28,7 +28,7 @@ export default function PublicBookCard({ book }: PublicBookCardProps) {
                     />
                 ) : (
                     <div className="flex h-full w-full flex-col items-center justify-center gap-3 bg-gradient-to-br from-[#1f5476] to-[#2596be] p-4 text-white">
-                        <BookOpen size={36} strokeWidth={1.5} className="opacity-60" />
+                        <span className="text-xs text-white/60">Buku</span>
                         <span className="text-center text-xs font-medium leading-tight opacity-80">
                             {book.title}
                         </span>

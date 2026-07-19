@@ -1,14 +1,5 @@
 import { Head, Link } from '@inertiajs/react';
-import {
-    Search,
-    BookOpen,
-    Newspaper,
-    FlaskConical,
-    ArrowRight,
-    Users,
-    FileText,
-    Library,
-} from 'lucide-react';
+
 import { useState } from 'react';
 import { router } from '@inertiajs/react';
 import GuestLayout from '@/layouts/guest-layout';
@@ -131,10 +122,9 @@ export default function Home({
                             className="mt-8 flex max-w-lg gap-2"
                         >
                             <div className="relative flex-1">
-                                <Search
-                                    size={16}
-                                    className="absolute top-1/2 left-4 -translate-y-1/2 text-gray-400"
-                                />
+                                <div className="absolute top-1/2 left-4 -translate-y-1/2 text-gray-400 font-bold text-xs">
+                                    CARI
+                                </div>
                                 <input
                                     type="text"
                                     placeholder="Cari buku, jurnal, atau berita..."
@@ -159,14 +149,12 @@ export default function Home({
                                 href="/jurnal"
                                 className="inline-flex items-center gap-2 rounded-xl bg-[#2596be] px-6 py-3 text-sm font-bold text-white shadow transition hover:-translate-y-0.5 hover:bg-[#2596be]/90 hover:shadow-lg"
                             >
-                                <FlaskConical size={16} />
                                 Jelajahi Jurnal
                             </Link>
                             <Link
                                 href="/buku"
                                 className="inline-flex items-center gap-2 rounded-xl border border-white/30 bg-white/10 px-6 py-3 text-sm font-bold text-white backdrop-blur-sm transition hover:bg-white/20"
                             >
-                                <BookOpen size={16} />
                                 Katalog Buku
                             </Link>
                         </div>
@@ -180,32 +168,23 @@ export default function Home({
                     <div className="grid grid-cols-2 gap-6 sm:grid-cols-4">
                         {[
                             {
-                                icon: FlaskConical,
                                 value: latestArticles.length > 0 ? '50+' : '0',
                                 label: 'Artikel Jurnal',
                             },
                             {
-                                icon: Library,
                                 value: `${latestBooks.length}+`,
                                 label: 'Koleksi Buku',
                             },
                             {
-                                icon: Newspaper,
                                 value: `${latestPosts.length}+`,
                                 label: 'Berita & Kegiatan',
                             },
-                            { icon: Users, value: '2+', label: 'Jurnal Aktif' },
-                        ].map(({ icon: Icon, value, label }) => (
+                            { value: '2+', label: 'Jurnal Aktif' },
+                        ].map(({ value, label }) => (
                             <div
                                 key={label}
                                 className="flex items-center gap-3"
                             >
-                                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#1f5476]/10">
-                                    <Icon
-                                        size={20}
-                                        className="text-[#1f5476]"
-                                    />
-                                </div>
                                 <div>
                                     <div className="text-xl leading-none font-extrabold text-[#1f5476]">
                                         {value}
@@ -243,7 +222,7 @@ export default function Home({
                                 href="/jurnal"
                                 className="inline-flex items-center gap-2 rounded-xl bg-[#2596be] px-6 py-3 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:bg-[#2596be]/90 hover:shadow-lg"
                             >
-                                Lihat Semua Jurnal <ArrowRight size={16} />
+                                Lihat Semua Jurnal &rarr;
                             </Link>
                         </div>
                     </div>
@@ -269,7 +248,7 @@ export default function Home({
                                 href="/buku"
                                 className="inline-flex items-center gap-2 rounded-xl border-2 border-[#2596be] px-6 py-3 text-sm font-bold text-[#2596be] transition hover:bg-[#2596be] hover:text-white"
                             >
-                                Lihat Semua Buku <ArrowRight size={16} />
+                                Lihat Semua Buku &rarr;
                             </Link>
                         </div>
                     </div>
@@ -297,10 +276,7 @@ export default function Home({
             {/* ─────────────────────── CTA BOTTOM ─────────────────────── */}
             <section className="bg-[#2596be] py-14">
                 <div className="mx-auto max-w-7xl px-6 text-center lg:px-12">
-                    <FileText
-                        size={36}
-                        className="mx-auto mb-4 text-white/60"
-                    />
+
                     <h2 className="text-2xl font-extrabold text-white md:text-3xl">
                         Ingin mempublikasikan penelitian Anda?
                     </h2>

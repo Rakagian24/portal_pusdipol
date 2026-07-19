@@ -1,5 +1,5 @@
 import { Head, Link } from '@inertiajs/react';
-import { ExternalLink, BookOpen, ChevronRight } from 'lucide-react';
+
 import GuestLayout from '@/layouts/guest-layout';
 import PublicSectionHeader from '@/components/public/public-section-header';
 import PublicArticleCard from '@/components/public/public-article-card';
@@ -47,16 +47,16 @@ export default function JournalShow({ journal, articles }: Props) {
                     {/* Breadcrumb */}
                     <nav className="mb-5 flex items-center gap-1.5 text-xs text-white/60">
                         <Link href="/" className="hover:text-white transition-colors">Beranda</Link>
-                        <ChevronRight size={12} />
+                        <span className="text-white/40">/</span>
                         <Link href="/jurnal" className="hover:text-white transition-colors">Jurnal Ilmiah</Link>
-                        <ChevronRight size={12} />
+                        <span className="text-white/40">/</span>
                         <span className="text-white/90">{journal.name}</span>
                     </nav>
 
                     <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
                         <div>
                             <div className="mb-2 inline-flex items-center gap-2 rounded-full bg-[#2596be]/20 px-3 py-1 text-xs font-bold text-[#2596be]">
-                                <BookOpen size={11} />
+
                                 Jurnal Ilmiah
                             </div>
                             <h1 className="text-3xl font-extrabold text-white">{journal.name}</h1>
@@ -72,7 +72,7 @@ export default function JournalShow({ journal, articles }: Props) {
                             rel="noopener noreferrer"
                             className="inline-flex shrink-0 items-center gap-2 rounded-xl border border-white/30 bg-white/10 px-5 py-2.5 text-sm font-bold text-white backdrop-blur-sm transition hover:bg-white/20"
                         >
-                            <ExternalLink size={14} />
+
                             Kunjungi Website Jurnal
                         </a>
                     </div>
@@ -88,7 +88,7 @@ export default function JournalShow({ journal, articles }: Props) {
 
                 {articles.data.length === 0 ? (
                     <div className="py-24 text-center text-gray-400">
-                        <BookOpen size={48} className="mx-auto mb-4 opacity-30" />
+
                         <p className="font-medium">Belum ada artikel tersinkronisasi.</p>
                         <p className="mt-1 text-sm">Jalankan sinkronisasi OJS untuk mengisi data artikel.</p>
                     </div>

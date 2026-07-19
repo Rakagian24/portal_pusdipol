@@ -1,5 +1,5 @@
 import { Head, Link } from '@inertiajs/react';
-import { Calendar, Tag, User, ChevronRight, ImageOff } from 'lucide-react';
+
 import GuestLayout from '@/layouts/guest-layout';
 
 interface Post {
@@ -30,9 +30,9 @@ export default function PostShow({ post }: { post: Post }) {
                 <div className="mx-auto max-w-5xl">
                     <nav className="flex items-center gap-1.5 text-xs text-gray-500">
                         <Link href="/" className="hover:text-[#2596be] transition-colors">Beranda</Link>
-                        <ChevronRight size={12} />
+                        <span className="text-gray-400">/</span>
                         <Link href="/berita" className="hover:text-[#2596be] transition-colors">Berita & Kegiatan</Link>
-                        <ChevronRight size={12} />
+                        <span className="text-gray-400">/</span>
                         <span className="text-gray-800 font-medium line-clamp-1 max-w-xs">{post.title}</span>
                     </nav>
                 </div>
@@ -51,7 +51,7 @@ export default function PostShow({ post }: { post: Post }) {
                     </div>
                 ) : (
                     <div className="mb-8 flex h-48 items-center justify-center rounded-2xl bg-gradient-to-br from-[#1f5476]/5 to-[#2596be]/10">
-                        <ImageOff size={36} className="text-gray-300" />
+                        <div className="text-gray-300 text-xs">No Image</div>
                     </div>
                 )}
 
@@ -59,19 +59,19 @@ export default function PostShow({ post }: { post: Post }) {
                 <div className="mb-5 flex flex-wrap items-center gap-2.5">
                     {post.category && (
                         <span className="inline-flex items-center gap-1.5 rounded-full bg-[#2596be] px-3 py-1 text-xs font-bold uppercase tracking-wider text-white">
-                            <Tag size={10} />
+
                             {post.category.name}
                         </span>
                     )}
                     {formattedDate && (
                         <span className="flex items-center gap-1.5 text-sm text-gray-500">
-                            <Calendar size={13} />
+
                             {formattedDate}
                         </span>
                     )}
                     {post.author && (
                         <span className="flex items-center gap-1.5 text-sm text-gray-500">
-                            <User size={13} />
+
                             {post.author.name}
                         </span>
                     )}

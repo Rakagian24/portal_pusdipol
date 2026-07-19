@@ -1,4 +1,3 @@
-import { Calendar, FileText, ExternalLink, Download } from 'lucide-react';
 
 interface Article {
     id: number;
@@ -45,13 +44,13 @@ export default function PublicArticleCard({ article, ojsBaseUrl }: PublicArticle
                         )}
                         {article.issue_volume && (
                             <span className="flex items-center gap-1 rounded-md bg-gray-100 px-2 py-0.5 text-gray-600">
-                                <FileText size={10} />
+
                                 {article.issue_volume}
                             </span>
                         )}
                         {article.published_date && (
                             <span className="flex items-center gap-1 text-gray-400">
-                                <Calendar size={10} />
+
                                 {new Date(article.published_date).toLocaleDateString('id-ID', { year: 'numeric', month: 'long' })}
                             </span>
                         )}
@@ -83,7 +82,7 @@ export default function PublicArticleCard({ article, ojsBaseUrl }: PublicArticle
                                 rel="noopener noreferrer"
                                 className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#2596be] transition hover:text-[#1f5476]"
                             >
-                                <ExternalLink size={12} />
+
                                 Baca di OJS
                             </a>
                         )}
@@ -94,7 +93,7 @@ export default function PublicArticleCard({ article, ojsBaseUrl }: PublicArticle
                                 rel="noopener noreferrer"
                                 className="inline-flex items-center gap-1.5 rounded-lg bg-[#e62129] px-3 py-1 text-xs font-bold text-white transition hover:bg-[#c01820]"
                             >
-                                <Download size={10} />
+
                                 PDF
                             </a>
                         )}

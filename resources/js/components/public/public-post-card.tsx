@@ -1,5 +1,5 @@
 import { Link } from '@inertiajs/react';
-import { Calendar, Tag, ImageOff } from 'lucide-react';
+
 
 interface Post {
     id: number;
@@ -38,15 +38,13 @@ export default function PublicPostCard({ post }: PublicPostCardProps) {
                         className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                 ) : (
-                    <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-[#2596be]/10 to-[#1f5476]/10">
-                        <ImageOff size={32} className="text-gray-300" />
-                    </div>
+                        <div className="text-gray-300 text-xs">No Image</div>
                 )}
                 {/* Category badge */}
                 {post.category && (
                     <div className="absolute top-3 left-3">
                         <span className="inline-flex items-center gap-1 rounded-full bg-[#2596be] px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-white shadow">
-                            <Tag size={8} />
+
                             {post.category.name}
                         </span>
                     </div>
@@ -60,7 +58,7 @@ export default function PublicPostCard({ post }: PublicPostCardProps) {
                 </h3>
                 {post.published_at && (
                     <div className="mt-4 flex items-center gap-1.5 text-xs text-gray-400">
-                        <Calendar size={12} />
+
                         <span>{formatDate(post.published_at)}</span>
                     </div>
                 )}

@@ -1,21 +1,5 @@
 import { Link, usePage, router } from '@inertiajs/react';
-import {
-    Menu,
-    X,
-    ChevronDown,
-    User,
-    Bookmark,
-    LogOut,
-    BookOpen,
-    Newspaper,
-    FlaskConical,
-    GraduationCap,
-    Home,
-    Phone,
-    Mail,
-    MapPin,
-    Info,
-} from 'lucide-react';
+
 import React, { useState, useEffect } from 'react';
 import {
     DropdownMenu,
@@ -30,11 +14,11 @@ import PublicLogo from '@/components/public/public-logo';
 import { logout } from '@/routes';
 
 const navLinks = [
-    { href: '/', label: 'Beranda', icon: Home },
-    { href: '/jurnal', label: 'Jurnal Ilmiah', icon: FlaskConical },
-    { href: '/buku', label: 'Katalog Buku', icon: BookOpen },
-    { href: '/berita', label: 'Berita & Kegiatan', icon: Newspaper },
-    { href: '/tentang-kami', label: 'Tentang Kami', icon: Info },
+    { href: '/', label: 'Beranda' },
+    { href: '/jurnal', label: 'Jurnal Ilmiah' },
+    { href: '/buku', label: 'Katalog Buku' },
+    { href: '/berita', label: 'Berita & Kegiatan' },
+    { href: '/tentang-kami', label: 'Tentang Kami' },
 ];
 
 export default function GuestLayout({
@@ -63,16 +47,10 @@ export default function GuestLayout({
                 <div className="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-12">
                     <div className="flex items-center gap-6">
                         <span className="flex items-center gap-1.5">
-                            <MapPin size={11} className="text-[#ffe100]" />
                             Jl. Karapitan No. 116, Bandung
                         </span>
-                        {/* <span className="flex items-center gap-1.5">
-                            <Mail size={11} className="text-[#ffe100]" />
-                            psk@unla.ac.id
-                        </span> */}
                     </div>
                     <div className="flex items-center gap-1.5">
-                        <GraduationCap size={11} className="text-[#ffe100]" />
                         <span>
                             Universitas Langlangbuana — Pusat Studi Kepolisian
                         </span>
@@ -117,7 +95,6 @@ export default function GuestLayout({
                                     <span className="hidden max-w-[100px] truncate sm:inline-block">
                                         {auth.user.name}
                                     </span>
-                                    <ChevronDown className="h-3.5 w-3.5 text-gray-400" />
                                 </DropdownMenuTrigger>
                                 <DropdownMenuContent
                                     align="end"
@@ -136,7 +113,6 @@ export default function GuestLayout({
                                                 href="/settings/profile"
                                                 className="flex w-full items-center"
                                             >
-                                                <User className="mr-3 h-4 w-4" />
                                                 Profil Saya
                                             </Link>
                                         </DropdownMenuItem>
@@ -148,7 +124,6 @@ export default function GuestLayout({
                                                 href="/dashboard"
                                                 className="flex w-full items-center"
                                             >
-                                                <Bookmark className="mr-3 h-4 w-4" />
                                                 Dashboard
                                             </Link>
                                         </DropdownMenuItem>
@@ -165,7 +140,6 @@ export default function GuestLayout({
                                             onClick={handleLogout}
                                             className="flex w-full items-center"
                                         >
-                                            <LogOut className="mr-3 h-4 w-4" />
                                             Keluar
                                         </Link>
                                     </DropdownMenuItem>
@@ -195,7 +169,7 @@ export default function GuestLayout({
                             className="flex h-10 w-10 items-center justify-center rounded-xl border border-gray-200 text-[#1f5476] transition hover:border-[#2596be] hover:bg-[#2596be]/5 md:hidden"
                             aria-label="Toggle menu"
                         >
-                            {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+                            {mobileOpen ? 'Tutup' : 'Menu'}
                         </button>
                     </div>
                 </div>
@@ -262,20 +236,12 @@ export default function GuestLayout({
                             </h4>
                             <ul className="flex flex-col gap-3 text-sm">
                                 <li className="flex items-start gap-2">
-                                    <MapPin
-                                        size={14}
-                                        className="mt-0.5 shrink-0 text-[#ffe100]"
-                                    />
                                     <span>
                                         Jl. Karapitan No. 116, Bandung, Jawa
                                         Barat 40261
                                     </span>
                                 </li>
                                 <li className="flex items-center gap-2">
-                                    <Mail
-                                        size={14}
-                                        className="shrink-0 text-[#ffe100]"
-                                    />
                                     <a
                                         href="mailto:psk@unla.ac.id"
                                         className="transition-colors hover:text-white"
@@ -284,10 +250,6 @@ export default function GuestLayout({
                                     </a>
                                 </li>
                                 <li className="flex items-center gap-2">
-                                    <Phone
-                                        size={14}
-                                        className="shrink-0 text-[#ffe100]"
-                                    />
                                     <span>(022) 4231948</span>
                                 </li>
                             </ul>
