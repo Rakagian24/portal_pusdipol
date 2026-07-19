@@ -1,5 +1,5 @@
 import { Head, Link } from '@inertiajs/react';
-
+import { ImageOff } from 'lucide-react';
 import GuestLayout from '@/layouts/guest-layout';
 
 interface Post {
@@ -51,7 +51,7 @@ export default function PostShow({ post }: { post: Post }) {
                     </div>
                 ) : (
                     <div className="mb-8 flex h-48 items-center justify-center rounded-2xl bg-gradient-to-br from-[#1f5476]/5 to-[#2596be]/10">
-                        <div className="text-gray-300 text-xs">No Image</div>
+                        <ImageOff size={36} className="text-gray-300" />
                     </div>
                 )}
 

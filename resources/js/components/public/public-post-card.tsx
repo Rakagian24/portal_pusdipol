@@ -1,5 +1,5 @@
 import { Link } from '@inertiajs/react';
-
+import { ImageOff } from 'lucide-react';
 
 interface Post {
     id: number;
@@ -38,7 +38,9 @@ export default function PublicPostCard({ post }: PublicPostCardProps) {
                         className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                 ) : (
-                        <div className="text-gray-300 text-xs">No Image</div>
+                    <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-[#2596be]/10 to-[#1f5476]/10">
+                        <ImageOff size={32} className="text-gray-300" />
+                    </div>
                 )}
                 {/* Category badge */}
                 {post.category && (

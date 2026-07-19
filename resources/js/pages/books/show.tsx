@@ -1,5 +1,5 @@
 import { Head, Link } from '@inertiajs/react';
-
+import { BookOpen } from 'lucide-react';
 import GuestLayout from '@/layouts/guest-layout';
 
 interface Book {
@@ -47,7 +47,7 @@ export default function BookShow({ book }: { book: Book }) {
                                 />
                             ) : (
                                 <div className="flex h-full w-full flex-col items-center justify-center gap-4 bg-gradient-to-br from-[#1f5476] to-[#2596be] text-white">
-
+                                    <BookOpen size={48} strokeWidth={1.5} className="opacity-60" />
                                     <span className="px-4 text-center text-sm font-medium opacity-70 leading-tight">
                                         {book.title}
                                     </span>

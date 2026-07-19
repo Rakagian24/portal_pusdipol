@@ -1,5 +1,5 @@
 import { Head, Link } from '@inertiajs/react';
-
+import { BookOpen } from 'lucide-react';
 import GuestLayout from '@/layouts/guest-layout';
 import PublicSectionHeader from '@/components/public/public-section-header';
 
@@ -60,7 +60,7 @@ export default function JournalsIndex({ journals }: { journals: Journal[] }) {
                                         />
                                     ) : (
                                         <div className="flex h-20 w-20 items-center justify-center rounded-xl bg-gradient-to-br from-[#1f5476] to-[#2596be] text-white">
-                                            <span className="text-xs text-white/60">Jurnal</span>
+                                            <BookOpen size={28} strokeWidth={1.5} />
                                         </div>
                                     )}
                                 </div>
